@@ -8,3 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: ls /usr/lib/jvm
+    - run: echo $PATH
+    - run: echo $JAVA_HOME
