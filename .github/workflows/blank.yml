@@ -9,4 +9,6 @@ jobs:
     steps:
     - run: ls /usr/lib/jvm
     - run: echo $PATH
+    - run: which java
+    - run: which java | realpath
     - run: echo $JAVA_HOME
