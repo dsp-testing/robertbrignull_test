@@ -10,5 +10,5 @@ jobs:
     - run: ls /usr/lib/jvm
     - run: echo $PATH
     - run: which java
-    - run: which java | realpath
+    - run: realpath $(which java)
     - run: echo $JAVA_HOME
