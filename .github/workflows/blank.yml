@@ -1,14 +1,22 @@
-name: CI
+name: "CodeQL analysis"
 
-on:
-  push:
+on: [push]
 
 jobs:
-  build:
+  codeql:
     runs-on: ubuntu-latest
+
     steps:
-    - run: ls /usr/lib/jvm
-    - run: echo $PATH
-    - run: which java
-    - run: realpath $(which java)
-    - run: echo $JAVA_HOME
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: javascript
+        config-file: .//codeql-config.yml
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
