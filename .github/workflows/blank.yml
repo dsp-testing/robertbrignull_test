@@ -13,10 +13,10 @@ jobs:
         submodules: recursive
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
+      uses: github/codeql-action/init@58a00345495a3ee17fc812514d9c33b3946e7c0d
       with:
         languages: javascript
         config-file: .//codeql-config.yml
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+      uses: github/codeql-action/analyze@58a00345495a3ee17fc812514d9c33b3946e7c0d
