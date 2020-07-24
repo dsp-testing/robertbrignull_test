@@ -168,6 +168,7 @@ export interface StatusReportBase {
   "cause"?: string;
   // Stack trace of the failure (or undefined if status is not failure)
   "exception"?: string;
+  "languages": string;
 }
 
 /**
@@ -214,7 +215,8 @@ export async function createStatusReportBase(
     action_oid: "unknown", // TODO decide if it's possible to fill this in
     started_at: workflowStartedAt,
     action_started_at: actionStartedAt.toISOString(),
-    status: status
+    status: status,
+    languages: "",
   };
 
   // Add optional parameters
