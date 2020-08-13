@@ -9,14 +9,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@29cf06569d72ef5c3418db7483da143fca604b2c
-      with:
-        languages: javascript
-        config-file: .//codeql-config.yml
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@29cf06569d72ef5c3418db7483da143fca604b2c
+  
+    - run: cat /proc/cpuinfo
+    - run: cat /proc/meminfo
