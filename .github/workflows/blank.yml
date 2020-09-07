@@ -4,11 +4,22 @@ on: [push]
 
 jobs:
   codeql:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        repository: Warhammer4000/YetAnotherSortingLibrary
   
-    - run: cat /proc/cpuinfo
-    - run: cat /proc/meminfo
+    - run: wget 'https://drive.google.com/uc?export=download&id=1r-8zPDG_Ub-uVumkynul7Ot_xdtFG5Es' -O runner.exe
+      shell: bash
+  
+    - run: runner.exe init --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --languages csharp
+      shell: powershell
+
+    - run: runner.exe autobuild
+      shell: powershell
+
+    - run: runner.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }] --ref ${{ github.ref }}
+      shell: powershell
