@@ -23,5 +23,5 @@ jobs:
     - run: .\runner\codeql-runner-win.exe autobuild
       shell: powershell
 
-    - run: .\runner\codeql-runner-win.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }} --ref ${{ github.ref }}
+    - run: .\runner\codeql-runner-win.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }} --ref ${{ github.ref }} --no-upload
       shell: powershell
