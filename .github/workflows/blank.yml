@@ -11,15 +11,17 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: Warhammer4000/YetAnotherSortingLibrary
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        path: runner
   
-    - run: wget "https://drive.google.com/uc?export=download&id=1r-8zPDG_Ub-uVumkynul7Ot_xdtFG5Es" -OutFile runner.exe
-      shell: powershell
-  
-    - run: .\runner.exe init --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --languages csharp
+    - run: .\runner\codeql-runner-win.exe init --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --languages csharp
       shell: powershell
 
-    - run: .\runner.exe autobuild
+    - run: .\runner\codeql-runner-win.exe autobuild
       shell: powershell
 
-    - run: .\runner.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }} --ref ${{ github.ref }}
+    - run: .\runner\codeql-runner-win.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }} --ref ${{ github.ref }}
       shell: powershell
