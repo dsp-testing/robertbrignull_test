@@ -19,11 +19,14 @@ jobs:
   
     - run: .\runner\codeql-runner-win.exe init --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --languages csharp
       shell: powershell
+  
+    - run: .\runner\codeql-runner-win.exe init --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --languages csharp
+      shell: powershell
 
-#     - run: |
-#         cat .\codeql-runner\codeql-env.sh | Invoke-Expression
-#         cmd.exe /C dotnet build --no-incremental .\DTD.Sort.Net.sln
-#       shell: powershell
+    - run: |
+        cat .\codeql-runner\codeql-env.sh | Invoke-Expression
+        cmd.exe /C dotnet build --no-incremental .\DTD.Sort.Net.sln
+      shell: powershell
 
     - run: .\runner\codeql-runner-win.exe analyze --repository Warhammer4000/YetAnotherSortingLibrary --github-url https://github.com --github-auth ${{ github.token }} --commit ${{ github.sha }} --ref ${{ github.ref }} --no-upload
       shell: powershell
