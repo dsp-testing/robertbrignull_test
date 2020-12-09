@@ -66,25 +66,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-
-  analyze-windows:
-    name: Analyze Windows
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
-      with:
-        languages: javascript
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
-    
-    - shell: bash
-      run: cat ../results/sarif.json
-
-    - shell: powershell 
-      run: Get-Content D:\a\repo\results\file.sarif
